@@ -58,7 +58,7 @@ Revenue signal → explainable risk score → Gemini diagnosis → policy-bound 
 
 ## Architecture
 
-For the complete as-built architecture, domain model, policy precedence, AI boundary, persistence design, API contract, authentication model, evaluation methodology, failure modes, security posture, tradeoffs, deployment path, and technical debt, read the [Engineering Design](docs/ENGINEERING_DESIGN.md).
+For the complete as-built architecture, domain model, policy precedence, AI boundary, persistence design, API contract, authentication model, evaluation methodology, failure modes, security posture, tradeoffs, deployment path, and technical debt, read the [Engineering Design](docs/ENGINEERING_DESIGN.md) or download the [PDF edition](output/pdf/DuesPilot_Engineering_Design.pdf).
 
 ```mermaid
 flowchart LR
