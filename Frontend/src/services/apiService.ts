@@ -164,11 +164,11 @@ class ApiService {
     const isDev = import.meta.env.MODE === 'development';
     let baseURL = isDev ? import.meta.env.VITE_API_BASE_URL_DEV : import.meta.env.VITE_API_BASE_URL_PRO;
 
-    // Dynamic production fallback if VITE_API_BASE_URL_PRO is undefined in environment
+    // In hosted demo mode, use the current origin so an unavailable API fails
+    // quickly and the recovery service can switch to its deterministic browser
+    // adapter. A separately deployed API can still be supplied at build time.
     if (!baseURL && typeof window !== 'undefined') {
-      const protocol = window.location.protocol;
-      const hostname = window.location.hostname;
-      baseURL = `${protocol}//${hostname}:8000`;
+      baseURL = window.location.origin;
     }
 
     this.api = axios.create({
