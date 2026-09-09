@@ -58,6 +58,8 @@ Revenue signal → explainable risk score → Gemini diagnosis → policy-bound 
 
 ## Architecture
 
+For the complete as-built architecture, domain model, policy precedence, AI boundary, persistence design, API contract, authentication model, evaluation methodology, failure modes, security posture, tradeoffs, deployment path, and technical debt, read the [Engineering Design](docs/ENGINEERING_DESIGN.md).
+
 ```mermaid
 flowchart LR
   signal[Payment, checkout, or invoice signal] --> score[Deterministic risk breakdown]

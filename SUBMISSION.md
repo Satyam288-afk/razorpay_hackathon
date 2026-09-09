@@ -34,7 +34,7 @@ Revenue loss is rarely one clean failure: a checkout is abandoned, a subscriptio
 | Idempotent payment and promise handlers | Replayed customer events do not create duplicate money recovery or promise records. |
 | Action timeline + Conversations | Every simulated call outcome leaves an auditable record. |
 | Live Demo Outcomes | Current-run recovery metrics update after a simulated outcome. |
-| Synthetic Batch Benchmark | A transparent, reproducible comparison across nine fictional invoices. |
+| Synthetic Batch Benchmark | A transparent, reproducible dashboard/API comparison across a separate 72-invoice fictional cohort. |
 | Release-gate script | Core scenario → action → recovery → analytics → reset path is automatically verified. |
 
 ## Honest scope
@@ -42,7 +42,7 @@ Revenue loss is rarely one clean failure: a checkout is abandoned, a subscriptio
 - All bundled customers, invoices, phone numbers, calls, and outcomes are fictional demo data.
 - The dialer is an explicit in-browser simulation; it does not place a real call.
 - The batch benchmark is a coded assumption model, not a claim about merchant performance.
-- The demo adapter is in memory. Production would persist auditable events, authenticate users, ingest verified payment webhooks, and use consented communications.
+- Recovery state is persisted in local SQLite for a durable single-node demo. Production would use tenant-scoped managed Postgres, ingest signature-verified payment webhooks, and use consented communications.
 
 ## Final pre-submit checklist
 
@@ -57,5 +57,6 @@ Revenue loss is rarely one clean failure: a checkout is abandoned, a subscriptio
 ## Quick links
 
 - Product and local run instructions: [README.md](README.md)
+- Complete as-built architecture and tradeoffs: [Engineering Design](docs/ENGINEERING_DESIGN.md)
 - End-to-end demo release gate: [verify_recovery_demo.py](Backend/scripts/verify_recovery_demo.py)
 - Deterministic recovery engine: [engine.py](Backend/services/recovery/engine.py)
