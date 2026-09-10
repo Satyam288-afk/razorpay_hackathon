@@ -1,8 +1,17 @@
 # DuesPilot
 
-> A bounded AI workflow for finding revenue at risk, understanding customer replies, selecting a safe recovery action, and proving the outcome.
+> Built for the **Razorpay AI Builders Hackathon — AI Revenue Recovery track**.
 
-DuesPilot is a full-stack B2B revenue-recovery product. AI understands unstructured customer language; deterministic policy controls actions that affect money, customer outreach, and escalation.
+DuesPilot helps businesses recover delayed revenue by detecting money at risk, understanding why a customer has not paid, selecting a controlled recovery action, and proving the final outcome. AI interprets unstructured customer language, while a deterministic policy engine controls every action involving money, outreach, stopping rules, and human escalation.
+
+### Project links
+
+- **[Live deployed demo](https://duespilot-ai-revenue-recovery.satyamsr69.chatgpt.site)**
+- **[Engineering design document](docs/ENGINEERING_DESIGN.md)**
+- **[Download the engineering design PDF](output/pdf/DuesPilot_Engineering_Design.pdf)**
+- **[Source repository](https://github.com/Satyam288-afk/razorpay_hackathon)**
+
+The public deployment runs an honestly labelled, deterministic browser demo so judges can test the complete golden path without private API credentials. The repository also contains the FastAPI recovery engine, SQLite persistence, optional Gemini diagnosis, and optional Supabase authentication used by the full local architecture.
 
 ```text
 Revenue signal → explainable risk score → Gemini diagnosis → policy-bound action
