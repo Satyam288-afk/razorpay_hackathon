@@ -6,7 +6,7 @@ import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Analytics />
+    {window.location.hostname.endsWith('.vercel.app') && <Analytics />}
     <App />
   </StrictMode>,
 )

@@ -163,6 +163,7 @@ class ApiService {
     // Determine base URL based on Vite's mode
     const isDev = import.meta.env.MODE === 'development';
     let baseURL = isDev ? import.meta.env.VITE_API_BASE_URL_DEV : import.meta.env.VITE_API_BASE_URL_PRO;
+    const useOfflineAdapter = !isDev && !baseURL;
 
     // In hosted demo mode, use the current origin so an unavailable API fails
     // quickly and the recovery service can switch to its deterministic browser
@@ -180,6 +181,12 @@ class ApiService {
 
     // Request interceptor to attach Supabase auth token
     this.api.interceptors.request.use(async (config) => {
+      // A static deployment intentionally has no Python API. Reject before a
+      // request reaches the SPA catch-all (which returns index.html with 200)
+      // so feature services can activate their validated browser demo adapter.
+      if (useOfflineAdapter) {
+        return Promise.reject(new Error('Hosted recovery API is not configured'));
+      }
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.access_token) {
         config.headers.Authorization = `Bearer ${session.access_token}`;
